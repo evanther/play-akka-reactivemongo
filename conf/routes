@@ -1,0 +1,8 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+PUT     /alarms                     controllers.AlarmController.createAlarm
+GET     /alarm/:id                  controllers.AlarmController.getAlarm(id: Long)
+GET     /alarms                     controllers.AlarmController.listAllAlarms
