@@ -1,4 +1,4 @@
-name := """ConsultorArgentinoAlarmBackend"""
+name := """play-akka-reactivemongo"""
 
 version := "1.0-SNAPSHOT"
 
