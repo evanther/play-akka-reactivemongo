@@ -12,7 +12,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 /**
  * Created by evalery on 06/02/15.
  */
-object AlarmController extends Controller with AlarmsRepository with MongoAware with SettingsAware with ActorSystemProvider {
+object AlarmController extends Controller with AlarmsRepository with SettingsAware with MongoAware with ActorSystemProvider {
 
   lazy val actorSystem = Akka.system
 

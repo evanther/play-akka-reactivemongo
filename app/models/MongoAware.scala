@@ -1,6 +1,6 @@
 package models
 
-import reactivemongo.api.MongoDriver
+import reactivemongo.api.{DB, MongoDriver}
 import reactivemongo.core.nodeset.Authenticate
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -11,8 +11,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 trait MongoAware {
   this: ActorSystemProvider with SettingsAware =>
 
-  private val driver = new MongoDriver(actorSystem)
-  private val credentials = Seq(Authenticate(settings.mongoDbName, settings.mongoUser, settings.mongoPassword))
-  private val connection = driver.connection(nodes = settings.mongoServers, authentications = credentials)
-  lazy val db = connection(settings.mongoDbName)
+  private lazy val driver = new MongoDriver(actorSystem)
+  private lazy val credentials = List(Authenticate(settings.mongoDbName, settings.mongoUser, settings.mongoPassword))
+  private lazy val connection = driver.connection(nodes = settings.mongoServers, authentications = credentials)
+  lazy val db: DB = connection(settings.mongoDbName)
 }
